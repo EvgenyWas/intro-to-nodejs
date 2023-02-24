@@ -1,4 +1,4 @@
-const friends = [
+const defaultFriends = [
   {
     id: 0,
     name: "Nikola Tesla",
@@ -12,5 +12,7 @@ const friends = [
     name: "Albert Einstein",
   },
 ];
+
+const friends = new Map(Object.entries(defaultFriends));
 
 module.exports = friends;

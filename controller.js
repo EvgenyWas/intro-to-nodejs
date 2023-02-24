@@ -1,7 +1,6 @@
 const { friends } = require("./bd");
 
 function controller(req, res) {
-  console.log(req.url);
   const urlParts = req.url.split("/");
 
   switch (req.method) {
@@ -25,10 +24,10 @@ function controller(req, res) {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         if (urlParts.length === 3) {
-          const friendIndex = Number(urlParts[2]);
-          res.end(JSON.stringify(friends[friendIndex]));
+          const friendIndex = urlParts[2];
+          res.end(JSON.stringify(friends.get(friendIndex)));
         } else {
-          res.end(JSON.stringify(friends));
+          res.end(JSON.stringify([...friends.values()]));
         }
         break;
 
@@ -53,7 +52,7 @@ function controller(req, res) {
         req.on("data", (data) => {
           const friend = data.toString();
           console.log("Request:", friend);
-          friends.push(JSON.parse(friend));
+          friends.set(friends.size(), JSON.parse(friend));
         });
         req.pipe(res);
         break;
