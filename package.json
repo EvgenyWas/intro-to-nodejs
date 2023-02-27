@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "express-project",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "watch": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +19,8 @@
   },
   "homepage": "https://github.com/EvgenyWas/intro-to-nodejs#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
